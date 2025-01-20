@@ -66,9 +66,9 @@ def update_key_image(deck, key, state):
             key_style['icon'] = button['icon']
         image = render_key_image(deck, key_style["icon"], key_style["font"], button['label'])
 
-    with deck:
-        # Update requested key with the generated image.
-        deck.set_key_image(key, image)
+        with deck:
+            # Update  requested key with the generated image.
+            deck.set_key_image(key, image)
 
 
 def key_change_callback(deck, key, key_down):
@@ -183,7 +183,8 @@ def load_config_file(file_name="stroomer.ini"):
                 for option in config[section]:
                     print(" " + option + "= " + config[section][option])
         else:
-            print("Missing type in section " + section)
+            if section != "default":
+                print("Missing type in section " + section)
 
 
 if __name__ == "__main__":
